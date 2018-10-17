@@ -23,7 +23,7 @@ def render_responseLBS():
     lbs = float(request.args['lbs'])
     ans = lbs * 2.25
 
-    return render_template('responseLBS.html', response= ans)
+    return render_template('responseLBS.html', response=ans)
 
 @app.route("/responseTEMP")
 def render_responseTEMP():
