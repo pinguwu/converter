@@ -23,21 +23,21 @@ def render_responseLBS():
     lbs = float(request.args['lbs'])
     ans = lbs * 2.25
 
-    return render_template('responseLBS.html', response = ans)
+    return render_template('responseLBS.html', response= ans)
 
 @app.route("/responseTEMP")
 def render_responseTEMP():
     temp = float(request.args['fh'])
     ans = (temp - 32) * 5/9
 
-    return render_template('responseTEMP', response = ans)
+    return render_template('responseTEMP', response=ans)
 
 @app.route("/responseUSD")
 def render_responseUSD():
     mon = float(request.args['usd'])
     ans = mon * 0.87
 
-    return render_template('responseUSD', response = ans)
+    return render_template('responseUSD', response=ans)
 
 
 if __name__=="__main__":
