@@ -30,14 +30,14 @@ def render_responseTEMP():
     temp = float(request.args['fh'])
     ans = (temp - 32) * 5/9
 
-    return render_template('responseTEMP', response=ans)
+    return render_template('responseTEMP.html', response=ans)
 
 @app.route("/responseUSD")
 def render_responseUSD():
     mon = float(request.args['usd'])
     ans = mon * 0.87
 
-    return render_template('responseUSD', response=ans)
+    return render_template('responseUSD.html', response=ans)
 
 
 if __name__=="__main__":
