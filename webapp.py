@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template
+from flask import Flask, url_for, render_template, request
 
 app = Flask(__name__)
 
@@ -18,23 +18,26 @@ def render_weight():
 def render_temp():
     return render_template('FC.html')
 
-@app.route("/response")
-def render_response():
-    fh = float(request.args['fh'])
+@app.route("/responseLBS")
+def render_responseLBS():
     lbs = float(request.args['lbs'])
-    usd = float(request.args['usd'])
+    ans = lbs * 2.25
 
-    if (fh != None or fh != ''):
-        ans = (fh - 32) * 5/9
-        return render_template('response.html', response = ans)
+    return render_template('responseLBS.html', response = ans)
 
-    elif (lbs != None or lbs != ''):
-        ans = lbs / 2.205
-        return render_template('response.html', response = ans)
+@app.route("/responseTEMP")
+def render_responseTEMP():
+    temp = float(request.args['fh'])
+    ans = (temp - 32) * 5/9
 
-    elif (usd != None or usd != ''):
-        ans = usd / 1.16
-        return render_template('response.html', response = ans)
+    return render_template('responseTEMP', response = ans)
+
+@app.route("/responseUSD")
+def render_responseUSD():
+    mon = float(request.args['usd'])
+    ans = mon * 0.87
+
+    return render_template('responseUSD', response = ans)
 
 
 if __name__=="__main__":
